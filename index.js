@@ -71,7 +71,7 @@ const cleanSourceMap = (dirty, clean) => {
   }, {});
 };
 
-deepmergeConcat.concat = function queries(target, source) {
+deepmergeConcat.prototype.concat = function queries(target, source) {
   if (!isObject(target) || !isObject(source)) return new Error('Must recieve two objects to merge');
   if (Array.isArray(target) || Array.isArray(source)) return new Error('Must recieve two objects to merge');
   const { queryObj, containsArrays } = queryStrToArr(target);
