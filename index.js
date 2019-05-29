@@ -1,3 +1,46 @@
+// From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+if (!Object.keys) {
+  Object.keys = (function() {
+    'use strict';
+    var hasOwnProperty = Object.prototype.hasOwnProperty,
+        hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
+        dontEnums = [
+          'toString',
+          'toLocaleString',
+          'valueOf',
+          'hasOwnProperty',
+          'isPrototypeOf',
+          'propertyIsEnumerable',
+          'constructor'
+        ],
+        dontEnumsLength = dontEnums.length;
+
+    return function(obj) {
+      if (typeof obj !== 'function' && (typeof obj !== 'object' || obj === null)) {
+        throw new TypeError('Object.keys called on non-object');
+      }
+
+      var result = [], prop, i;
+
+      for (prop in obj) {
+        if (hasOwnProperty.call(obj, prop)) {
+          result.push(prop);
+        }
+      }
+
+      if (hasDontEnumBug) {
+        for (i = 0; i < dontEnumsLength; i++) {
+          if (hasOwnProperty.call(obj, dontEnums[i])) {
+            result.push(dontEnums[i]);
+          }
+        }
+      }
+      return result;
+    };
+  }());
+}
+
+
 const deepmerge = require('deepmerge');
 
 function isObject(obj) {
@@ -69,9 +112,7 @@ const cleanSourceMap = (dirty, clean) => {
   }, {});
 };
 
-const deepConcat = new Object(deepmerge);
-
-deepConcat.concat = function queries(target, source) {
+deepmerge.concat = function queries(target, source) {
   if (!isObject(target) || !isObject(source)) return new Error('Must recieve two objects to merge');
   if (Array.isArray(target) || Array.isArray(source)) return new Error('Must recieve two objects to merge');
   const { queryObj, containsArrays } = queryStrToArr(target);
@@ -88,13 +129,4 @@ deepConcat.concat = function queries(target, source) {
   return queryArrToStr(mergedQueries);
 };
 
-
-console.log("TCL:  deepmerge", deepmerge)
-console.log('')
-console.log("TCL: deepConcat", deepConcat)
-console.log('')
-console.log("TCL: deepConcat.concat", deepConcat.concat)
-console.log('')
-
-export default deepConcat;
-
+module.exports = deepmerge;

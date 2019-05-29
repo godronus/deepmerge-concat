@@ -1,27 +1,18 @@
 {
   "name": "deepmerge-concat",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "deepmerge with added concat function for devour queries",
-  "main": "dist/lib.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "TARGET=build NODE_ENV=production webpack -p --progress"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gordon Farquharson",
   "license": "MIT",
-  "browserslist": "> 0.25%, not dead",
   "repository": {
     "type": "git",
     "url": "https://github.com/godronus/deepmerge-concat.git"
   },
   "dependencies": {
     "deepmerge": "^3.2.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "babel-loader": "^8.0.6",
-    "core-js": "^2.6.9"
   }
 }
