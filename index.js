@@ -1,5 +1,7 @@
 const deepmerge = require('deepmerge');
 
+const deepmergeConcat = Object.assign({}, deepmerge);
+
 function isObject(obj) {
   return (obj !== null && typeof obj === 'object');
 }
@@ -69,7 +71,7 @@ const cleanSourceMap = (dirty, clean) => {
   }, {});
 };
 
-deepmerge.concat = function queries(target, source) {
+deepmergeConcat.concat = function queries(target, source) {
   if (!isObject(target) || !isObject(source)) return new Error('Must recieve two objects to merge');
   if (Array.isArray(target) || Array.isArray(source)) return new Error('Must recieve two objects to merge');
   const { queryObj, containsArrays } = queryStrToArr(target);
@@ -86,5 +88,5 @@ deepmerge.concat = function queries(target, source) {
   return queryArrToStr(mergedQueries);
 };
 
-module.exports = deepmerge;
+module.exports = deepmergeConcat;
 

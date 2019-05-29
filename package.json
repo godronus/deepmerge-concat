@@ -1,6 +1,6 @@
 {
   "name": "deepmerge-concat",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "deepmerge with added concat function for devour queries",
   "main": "dist/lib.js",
   "scripts": {
