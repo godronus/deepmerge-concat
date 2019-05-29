@@ -71,7 +71,7 @@ const cleanSourceMap = (dirty, clean) => {
   }, {});
 };
 
-deepConcat.concat = function queries(target, source) {
+deepConcat.prototype.concat = function queries(target, source) {
   if (!isObject(target) || !isObject(source)) return new Error('Must recieve two objects to merge');
   if (Array.isArray(target) || Array.isArray(source)) return new Error('Must recieve two objects to merge');
   const { queryObj, containsArrays } = queryStrToArr(target);
@@ -87,6 +87,8 @@ deepConcat.concat = function queries(target, source) {
   const mergedQueries = deepmerge(targetQuery, sourceQuery);
   return queryArrToStr(mergedQueries);
 };
+
+console.log("TCL: queries -> deepConcat", deepConcat);
 
 module.exports = deepConcat;
 
