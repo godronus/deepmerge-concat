@@ -1,18 +1,4 @@
 const deepmerge = require('deepmerge');
-const polyfills = require('./polyfills.js')
-
-// polyfills for IE
-if (!Array.isArray) {
-  polyfills.addIsArray();
-}
-
-if (!Array.prototype.reduce) {
-  polyfills.addReduce();
-}
-
-if (!Object.keys) {
-  polyfills.addKeys();
-}
 
 function isObject(obj) {
   return (obj !== null && typeof obj === 'object');
