@@ -1,11 +1,11 @@
-const path = require('path');
 require('@babel/polyfill');
+const path = require('path');
 const libraryName = 'deepmerge';
 const outputFile = libraryName + '.js'
 
 const lib = {
   entry: [
-    '@babel/polyfill',
+    // '@babel/polyfill',
     './index.js'
   ],
   output: {
