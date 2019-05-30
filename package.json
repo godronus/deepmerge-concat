@@ -5,7 +5,7 @@
   "main": "dist/deepmerge.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "TARGET=build NODE_ENV=production webpack -p --progress"
+    "build": "TARGET=build NODE_ENV=production webpack"
   },
   "author": "Gordon Farquharson",
   "license": "MIT",
