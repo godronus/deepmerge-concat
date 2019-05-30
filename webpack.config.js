@@ -1,15 +1,19 @@
 const path = require('path');
 require('@babel/polyfill');
+const libraryName = 'deepmerge';
+const outputFile = libraryName + '.js'
 
 const lib = {
   entry: [
     '@babel/polyfill',
-    // entry point of our app
     './index.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'lib.js'
+    filename: outputFile,
+    library: libraryName,
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   target: "web",
   module: {
