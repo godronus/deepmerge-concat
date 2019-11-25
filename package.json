@@ -14,7 +14,7 @@
     "url": "https://github.com/godronus/deepmerge-concat.git"
   },
   "dependencies": {
-    "deepmerge": "^3.2.0"
+    "deepmerge": "^4.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
